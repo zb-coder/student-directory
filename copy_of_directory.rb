@@ -39,11 +39,11 @@ end
 def print(students)
     a = 0
     while a < students.length
-        puts "#{a + 1}. #{students[a][:name]} 
-        -hobby: #{students[a][:hobby]}
-        -country_of_birth: #{students[a][:country_of_birth]}
-        -height: #{students[a][:height]}
-        -cohort: #{students[a][:cohort]}"
+        puts "#{a + 1}. #{students[a][:name]}".center(15, "-")
+        puts "-hobby: #{students[a][:hobby]}".center(20)
+        puts "-country_of_birth: #{students[a][:country_of_birth]}".center(20)
+        puts "-height: #{students[a][:height]}".center(20)
+        puts "-cohort: #{students[a][:cohort]}".center(20)
         a += 1
     end
 end
