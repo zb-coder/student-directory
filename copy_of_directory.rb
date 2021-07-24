@@ -82,9 +82,14 @@ end
 
 
 students = input_students
+if students == []
+    puts "There are no students"
+else
+    " "
 #nothing happens until we call the methods
 length = print_students(students)
 grouped_students = group_cohort(length)
 print_header
 print(grouped_students)
 print_footer(students)
+end
