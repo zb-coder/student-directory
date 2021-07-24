@@ -16,23 +16,16 @@ def input_students
     # return the array of students
     students
 end
-
-def first_initial
-    puts "Please enter students whose name begins with a specific letter"
-    initial = gets.chomp
-    initial
-end
     
+def print_students(students)
+    students.each.select do
+        |student| student[:name].length <= 12
+    end
+end
     
 def print_header
     puts "The students of Villians Academy"
     puts "-------------"
-end
-
-def print_students(students, initial)
-    students.each.select do 
-        |student| student[:name].chars.first == initial
-    end
 end
 
 def print(students)
@@ -48,9 +41,8 @@ end
 
 students = input_students
 #nothing happens until we call the methods
-initial = first_initial
-initial_students = print_students(students, initial)
+length = print_students(students)
+print length
 print_header
 print(students)
-print(initial_students)
 print_footer(students)
