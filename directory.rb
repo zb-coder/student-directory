@@ -39,12 +39,27 @@ def input_students
     name = STDIN.gets.chomp
     # while the name is not empty, repeat this code
     while !name.empty? do
+        puts "Which cohort is the student in?"
+        cohort = STDIN.gets.chomp
+        if cohort == ""
+            cohort = "Not assigned"
+        else
+            cohort = cohort.to_sym
+        end
         # add the student hash to the array
-        @students << {name: name, cohort: :november}
+        @students << student_hash([name, cohort])
         puts "Now we have #{@students.count} students"
         # get another name from the user
         name = STDIN.gets.chomp
     end
+end
+
+def student_hash(array)
+    identity_hash = {
+        name: array[0],
+        cohort: array[1]
+    }
+    identity_hash
 end
 
 def show_students
@@ -83,8 +98,8 @@ end
 def load_students(filename = "students.csv")
     file = File.open(filename, "r")
     file.readlines.each do |line|
-        name, cohort = line.chomp.split(',')
-        @students << {name: name, cohort: cohort.to_sym}
+        student = line.chomp.split(',')
+        @students << student_hash(student)
     end
     file.close
 end
